@@ -10,7 +10,7 @@ for idx in range(1, 100):
       start = ts
     end = ts
   http2LoadingTime.append(end - start)
-bp1 = plt.boxplot(http2LoadingTime)
+bp1 = plt.boxplot(http2LoadingTime, positions=['HTTP/2'])
 
 quic2LoadingTime = []
 for idx in range(1, 100):
@@ -21,8 +21,7 @@ for idx in range(1, 100):
       start = ts
     end = ts
   quic2LoadingTime.append(end - start)
-bp2 = plt.boxplot(quic2LoadingTime)
+bp2 = plt.boxplot(quic2LoadingTime, positions=['QUIC'])
 
-plt.legend([bp1["boxes"][0], bp2["boxes"][0]], ['HTTP/2', 'QUIC'], loc='upper right')
 plt.show()
 plt.savefig('task1.png')
