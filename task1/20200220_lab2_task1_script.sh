@@ -17,3 +17,5 @@ do
   sleep 2
   kill "$!" > /dev/null 2>&1
 done
+
+python3 20200220_lab2_task1_plotter.py
