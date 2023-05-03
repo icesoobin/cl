@@ -1,7 +1,7 @@
 import dpkt
 import matplotlib.pyplot as plt
 
-loadingTime = []
+http2LoadingTime = []
 for idx in range(1, 100):
   start = None
   end = None
@@ -9,7 +9,20 @@ for idx in range(1, 100):
     if not start:
       start = ts
     end = ts
-  loadingTime.append(end - start)
-plt.boxplot(loadingTime)
+  http2LoadingTime.append(end - start)
+bp1 = plt.boxplot(http2LoadingTime)
+
+quic2LoadingTime = []
+for idx in range(1, 100):
+  start = None
+  end = None
+  for ts, pkt in dpkt.pcap.Reader(open("quic/{:03d}.pcap".format(idx),'rb')):
+    if not start:
+      start = ts
+    end = ts
+  quic2LoadingTime.append(end - start)
+bp2 = plt.boxplot(quic2LoadingTime)
+
+plt.legend([bp1["boxes"][0], bp2["boxes"][0]], ['HTTP/2', 'QUIC'], loc='upper right')
 plt.show()
-plt.savefig('http2.png')
+plt.savefig('task1.png')
