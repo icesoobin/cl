@@ -21,7 +21,7 @@ for idx in range(1, 100):
     end = ts
   quic2LoadingTime.append(end - start)
 
-plt.boxplot([http2LoadingTime, quic2LoadingTime])
+plt.boxplot([http2LoadingTime, quic2LoadingTime], showfliers=False)
 plt.xticks([1, 2],['HTTP/2', 'QUIC'])
 
 plt.show()
