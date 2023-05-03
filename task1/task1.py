@@ -12,3 +12,4 @@ for idx in range(1, 100):
   loadingTime.append(end - start)
 plt.boxplot(loadingTime)
 plt.show()
+plt.savefig('http2.png')
